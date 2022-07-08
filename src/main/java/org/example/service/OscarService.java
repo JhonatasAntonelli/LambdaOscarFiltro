@@ -29,14 +29,11 @@ public class OscarService {
 
     public void variacaoIdade(int idadeInicial, int idadeFinal){
 
-        var variacao = listaDados.stream()
-                .filter(c-> c.getIdadeAtor()>=idadeInicial && c.getIdadeAtor()<= idadeFinal)
-                .collect(Collectors.toList());
         System.out.printf("Os vencedores do oscar entre %d e % d anos são:\n", idadeInicial, idadeFinal);
 
-        for (int i = 0; i < variacao.size(); i++) {
-            System.out.println(variacao.get(i).getNomeAtor() + " com " + variacao.get(i).getIdadeAtor() + " anos");
-        }
+        listaDados.stream()
+                .filter(c-> c.getIdadeAtor()>=idadeInicial && c.getIdadeAtor()<= idadeFinal)
+                .forEach(p -> System.out.printf("Nome: %s\nIdade: %d\n", p.getNomeAtor(), p.getIdadeAtor()));
 
     }
 }
